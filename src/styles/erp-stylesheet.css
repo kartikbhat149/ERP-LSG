@@ -1,0 +1,1173 @@
+@import "tailwindcss";
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   LSG DESIGN SYSTEM — COMPREHENSIVE STYLE FOUNDATION
+   
+   This file contains the complete design system configuration for the ERP
+   application, including:
+   - Color variables and semantic color system
+   - Typography and spacing scales
+   - Custom component classes
+   - Animation utilities
+   
+   Structure:
+   1. @theme — CSS custom properties & Tailwind config
+   2. @layer components — Reusable component classes
+   3. @layer utilities — Custom utility animations
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   LSG FOUNDATION — COLOR SYSTEM
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+@theme {
+
+    /* ─────────────────────────────────────────────────────────────────
+       SURFACE COLORS — Backgrounds & Panel Colors
+       ───────────────────────────────────────────────────────────────── */
+
+    --color-bg-base: #f4f4f4;
+    --color-bg-panel: #ffffff;
+    --color-bg-nav: #1a1a1a;
+    --color-bg-nav-hover: #2a2a2a;
+    --color-bg-nav-active: #0d2a50;
+    --color-bg-header: #212121;
+    --color-bg-section: #f9f9f9;
+    --color-bg-input: #ffffff;
+    --color-bg-row-alt: #fafafa;
+    --color-bg-tag: #e8e8e8;
+
+    /* ─────────────────────────────────────────────────────────────────
+       BORDER COLORS
+       ───────────────────────────────────────────────────────────────── */
+
+    --color-border: #d4d4d4;
+    --color-border-strong: #b0b0b0;
+    --color-border-focus: #0f3460;
+    --color-border-header: #333333;
+
+    /* ─────────────────────────────────────────────────────────────────
+       TEXT COLORS — Semantic Text Color Palette
+       ───────────────────────────────────────────────────────────────── */
+
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #555555;
+    --color-text-muted: #888888;
+    --color-text-nav: #c8c8c8;
+    --color-text-nav-muted: #7a7a7a;
+    --color-text-label: #3a3a3a;
+    --color-text-white: #f0f0f0;
+    --color-text-header-strong: #aaaaaa;
+    --color-text-breadcrumb-current: #cccccc;
+    --color-text-avatar: #8abaff;
+
+    /* ─────────────────────────────────────────────────────────────────
+       SEMANTIC COLORS — Accent, Status & Theme Colors
+       ───────────────────────────────────────────────────────────────── */
+
+    --color-accent: #0f3460;
+    --color-accent-light: #1a4a85;
+    --color-accent-pale: #e8eef7;
+    --color-logo-highlight: #4d8cff;
+    --color-avatar-bg: #2a4a6a;
+
+    --color-success: #1a7a4a;
+    --color-warning: #8a5a00;
+    --color-danger: #8a1a1a;
+
+    /* ─────────────────────────────────────────────────────────────────
+       TYPOGRAPHY — Font families, sizes & weights
+       ───────────────────────────────────────────────────────────────── */
+
+    /* Font Families */
+    --font-sans: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    /* Font Sizes */
+    --text-xxs: 0.625rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 0.95rem;
+
+
+    /* ─────────────────────────────────────────────────────────────────
+       ERP-SPECIFIC VARIABLES — Custom sizing and component spacing
+       ───────────────────────────────────────────────────────────────── */
+    --text-erp-sm: 0.8125rem;
+    --spacing-erp-30: 1.875rem;
+
+    --color-bg-nav-badge: #243a55;
+    --color-border-nav-item: #222222;
+
+    --color-text-nav-active: #a8caff;
+    --color-border-nav-active: #4d8cff;
+    --text-breadcrumb: 0.8125rem;
+
+    --text-table-base: 0.71875rem;
+    --text-table-header: 0.625rem;
+    --text-table-mono: 0.6875rem;
+    --color-border-table: #f0f0f0;
+
+    /* Toast notification semantic colors */
+
+    --color-toast-success-bg: #1a3a28;
+    --color-toast-success-text: #80e8a8;
+    --color-toast-success-border: #2a9a5a;
+
+    --color-toast-warn-bg: #3a2a00;
+    --color-toast-warn-text: #e8b060;
+    --color-toast-warn-border: #c07800;
+
+    --color-toast-info-bg: #0a2040;
+    --color-toast-info-text: #80b8ff;
+    --color-toast-info-border: #3a7adf;
+
+    /* Z-index stacking context for layered elements */
+    --z-index-toast: 30;
+    --z-index-modal: 40;
+    --z-index-dropdown: 30;
+    --z-index-tooltip: 20;
+
+    --grid-template-columns-form-row: 220px 1fr;
+
+}
+
+@layer components {
+
+    .erp-focusable:focus-visible {
+        @apply ring-2 ring-accent ring-offset-1;
+    }
+
+    .erp-disabled {
+        @apply opacity-60 cursor-not-allowed pointer-events-none;
+    }
+
+    .erp-preview {
+        @apply border border-border rounded-sm bg-bg-panel p-6 flex items-center gap-4;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       BUTTON COMPONENTS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-btn {
+        @apply inline-flex items-center gap-2 justify-center px-4 py-2 text-erp-sm rounded-sm border cursor-pointer transition-colors ease-linear focus:outline-none;
+    }
+
+    .erp-btn-primary {
+        @apply bg-accent text-text-white border-accent hover:bg-accent-light;
+    }
+
+    .erp-btn-secondary {
+        @apply bg-bg-panel text-text-primary border-border hover:bg-bg-section;
+    }
+
+    .erp-btn-danger {
+        @apply bg-danger text-text-white border-danger hover:opacity-90;
+    }
+
+    .erp-btn-success {
+        @apply bg-success text-text-white border-success hover:opacity-90;
+    }
+
+    .erp-btn-outline {
+        @apply bg-transparent border-border text-text-primary hover:bg-bg-section;
+    }
+
+    .erp-btn-ghost {
+        @apply bg-transparent border-transparent text-text-primary hover:bg-bg-section;
+    }
+
+    .erp-btn-link {
+        @apply bg-transparent border-transparent text-accent px-0 py-0 hover:text-accent-light underline-offset-2;
+    }
+
+    .erp-btn-icon {
+        @apply w-3.5 h-3.5 mr-1.5 -mt-1;
+    }
+
+    .erp-btn:disabled {
+        @apply opacity-50 cursor-not-allowed;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       FORM ELEMENTS
+       ═════════════════════════════════════════════════════════ */
+
+    /* Base input field */
+    .erp-input {
+        @apply w-full h-8 px-2.5 py-1.5 text-erp-sm rounded-sm border border-border bg-bg-input text-text-primary placeholder:text-text-muted transition-colors duration-150 ease-linear focus:outline-none focus:border-accent;
+    }
+
+    .erp-loading {
+        @apply opacity-70 pointer-events-none;
+    }
+
+    .erp-focus-ring {
+        @apply ring-2 ring-accent ring-offset-1;
+    }
+
+    .erp-input-group {
+        @apply flex items-stretch border border-border rounded-sm overflow-hidden bg-bg-panel;
+    }
+
+    .erp-input-group:focus-within {
+        @apply border-accent ring-accent focus:outline-none;
+    }
+
+    .erp-input-addon-button {
+        @apply px-4 flex items-center text-sm bg-bg-section border-l border-border transition hover:bg-bg-section/80;
+    }
+
+    .erp-input-group-field {
+        @apply flex-1 px-3 py-2 bg-transparent outline-none border-0 text-text-primary;
+    }
+
+    .erp-input-addon {
+        @apply px-3 flex items-center text-text-muted bg-bg-section border-r border-border;
+    }
+
+    /* Prefix block */
+    .erp-input-prefix {
+        @apply px-2.5 flex items-center text-text-muted text-erp-sm bg-bg-section border border-border rounded-l-sm;
+    }
+
+    /* Suffix block */
+    .erp-input-suffix {
+        @apply px-2.5 flex items-center text-text-muted text-erp-sm bg-bg-section border border-border rounded-r-sm;
+    }
+
+    /* Remove double borders between elements */
+    .erp-input-group .erp-input {
+        @apply rounded-none;
+    }
+
+    .erp-input-group .erp-input:first-child {
+        @apply rounded-l-sm;
+    }
+
+    .erp-input-group .erp-input:last-child {
+        @apply rounded-r-sm;
+    }
+
+    .erp-input-group .erp-input+.erp-input-suffix {
+        @apply -ml-px;
+    }
+
+    .erp-input-prefix+.erp-input {
+        @apply -ml-px;
+    }
+
+    .erp-input:disabled {
+        @apply opacity-60 cursor-not-allowed;
+    }
+
+    /* Icon button for input addon */
+    .erp-icon-btn {
+        @apply inline-flex items-center justify-center h-erp-30 w-erp-30 rounded-sm border border-border bg-bg-panel text-text-primary cursor-pointer transition-colors duration-150 ease-linear hover:bg-bg-section focus:outline-none focus:border-border-focus;
+    }
+
+    .erp-icon-btn-danger {
+        @apply text-danger hover:bg-danger hover:text-text-white;
+    }
+
+    .erp-textarea {
+        @apply w-full px-2.5 py-1.5 text-erp-sm rounded-sm border border-border bg-bg-input text-text-primary placeholder:text-text-muted transition-colors duration-150 ease-linear focus:outline-none focus:border-border-focus resize-y;
+    }
+
+    .erp-textarea:disabled {
+        @apply opacity-60 cursor-not-allowed;
+    }
+
+    /* Select dropdown field */
+    .erp-select {
+        @apply w-full h-8 px-2.5 pr-7 text-erp-sm rounded-sm border border-border bg-bg-input text-text-primary appearance-none cursor-pointer transition-colors duration-150 ease-linear focus:outline-none focus:border-border-focus;
+
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.625rem center;
+    }
+
+    .erp-select:disabled {
+        @apply opacity-60 cursor-not-allowed;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       FORM CONTROL ELEMENTS
+       ═════════════════════════════════════════════════════════ */
+
+    /* Checkbox row layout */
+    .erp-checkbox-row {
+        @apply flex items-start gap-2 cursor-pointer;
+    }
+
+    .erp-checkbox {
+        @apply h-4 w-4 mt-0.5 accent-accent cursor-pointer shrink-0;
+    }
+
+    .erp-checkbox-content {
+        @apply flex flex-col;
+    }
+
+    .erp-checkbox-text {
+        @apply text-erp-sm text-text-primary;
+    }
+
+    .erp-checkbox-sub {
+        @apply text-xs text-text-muted;
+    }
+
+    .erp-checkbox:disabled {
+        @apply opacity-60 cursor-not-allowed;
+    }
+
+    .erp-radio-row {
+        @apply flex items-start gap-2 cursor-pointer;
+    }
+
+    .erp-radio {
+        @apply h-4 w-4 mt-0.5 accent-accent cursor-pointer shrink-0;
+    }
+
+    .erp-radio-content {
+        @apply flex flex-col;
+    }
+
+    .erp-radio-text {
+        @apply text-erp-sm text-text-primary;
+    }
+
+    .erp-radio-sub {
+        @apply text-xs text-text-muted;
+    }
+
+    .erp-radio:disabled {
+        @apply opacity-60 cursor-not-allowed;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       TOGGLE COMPONENTS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-toggle-row {
+        @apply flex items-center gap-3;
+    }
+
+    .erp-toggle {
+        @apply relative w-9 h-5 rounded-full bg-border transition-colors duration-200 cursor-pointer;
+    }
+
+    .erp-toggle::after {
+        content: "";
+        @apply absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow transition-all duration-200;
+    }
+
+    .erp-toggle-on {
+        @apply bg-accent;
+    }
+
+    .erp-toggle-on::after {
+        @apply translate-x-4;
+    }
+
+    .erp-toggle-label {
+        @apply text-erp-sm text-text-primary;
+    }
+
+    .erp-toggle-disabled {
+        @apply opacity-60 cursor-not-allowed;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       TAGS & BADGES
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-tag {
+        @apply inline-flex items-center h-5 px-2 rounded-sm text-xs font-mono bg-bg-tag text-text-secondary border border-border;
+    }
+
+    .erp-tag-success {
+        @apply text-success border-success;
+    }
+
+    .erp-tag-warning {
+        @apply text-warning border-warning;
+    }
+
+    .erp-tag-danger {
+        @apply text-danger border-danger;
+    }
+
+    .erp-badge {
+        @apply inline-flex items-center justify-center min-w-4.5 h-4.5 px-1 rounded-sm text-xs font-semibold bg-border text-text-primary;
+    }
+
+    /* Semantic Variants */
+
+    .erp-badge-success {
+        @apply bg-success text-text-white;
+    }
+
+    .erp-badge-warning {
+        @apply bg-warning text-text-white;
+    }
+
+    .erp-badge-danger {
+        @apply bg-danger text-text-white;
+    }
+
+    .erp-badge-accent {
+        @apply bg-accent text-text-white;
+    }
+
+    /* Status indicator dot */
+    .erp-status-dot {
+        @apply inline-block w-2.5 h-2.5 rounded-full bg-border;
+    }
+
+    .erp-status-dot-success {
+        @apply bg-success;
+    }
+
+    .erp-status-dot-warning {
+        @apply bg-warning;
+    }
+
+    .erp-status-dot-danger {
+        @apply bg-danger;
+    }
+
+    .erp-status-dot-accent {
+        @apply bg-accent;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       AVATAR COMPONENTS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-avatar {
+        @apply w-7 h-7 flex items-center justify-center rounded-full bg-avatar-bg text-text-avatar font-semibold text-xs;
+    }
+
+    .erp-avatar-img {
+        @apply w-full h-full object-cover rounded-full;
+    }
+
+    .erp-avatar-sm {
+        @apply w-6 h-6 text-xxs;
+    }
+
+    .erp-avatar-lg {
+        @apply w-10 h-10 text-base;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       LINK COMPONENTS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-link {
+        @apply text-accent text-xs cursor-pointer;
+    }
+
+    /* Optional hover tone shift (if ERP behavior supports it) */
+    .erp-link:hover {
+        @apply text-accent-light;
+    }
+
+    .erp-link-muted {
+        @apply text-text-secondary;
+    }
+
+    .erp-link-danger {
+        @apply text-danger;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DIVIDERS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-divider {
+        @apply w-full border-t border-border;
+    }
+
+    .erp-divider-strong {
+        @apply border-border-strong;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       LABELS & FORM TEXT
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-label {
+        @apply block text-erp-sm text-text-label font-medium;
+    }
+
+    .erp-help {
+        @apply mt-1 text-xs text-text-muted;
+    }
+
+    .erp-help-warning {
+        @apply text-warning;
+    }
+
+    .erp-help-danger {
+        @apply text-danger;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       FORM LAYOUT & STRUCTURE
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-form-row {
+        @apply grid grid-cols-form-row items-start gap-6 px-5 py-3 border-b border-border space-y-1;
+    }
+
+    .erp-form-row-alt {
+        @apply bg-bg-row-alt;
+    }
+
+    .erp-form-label-col {}
+
+    .erp-form-label {
+        @apply text-sm font-medium text-text-label;
+    }
+
+    .erp-form-label-sub {
+        @apply text-xs text-text-muted mt-1;
+    }
+
+    .erp-form-control-col {
+        @apply flex flex-col gap-1;
+    }
+
+    .erp-form-inline {
+        @apply flex items-center gap-3 flex-wrap;
+    }
+
+    .erp-field {
+        @apply flex flex-col gap-1;
+    }
+
+    .erp-field-error .erp-input {
+        @apply border-danger ring-1 ring-danger;
+    }
+
+    /* Section header and title styling */
+    .erp-section-header {
+        @apply flex items-center justify-between pb-3 border-b border-border;
+    }
+
+    .erp-section-title {
+        @apply text-base font-semibold text-text-primary;
+    }
+
+    .erp-section-subtitle {
+        @apply text-xs text-text-muted mt-1;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       TABS & TAB NAVIGATION
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-tab-bar {
+        @apply flex gap-6 border-b border-border;
+    }
+
+    .erp-tab {
+        @apply pb-3 text-sm text-text-muted border-b-2 border-transparent transition;
+    }
+
+    .erp-tab:hover {
+        @apply text-text-primary;
+    }
+
+    .erp-tab-active {
+        @apply text-accent border-accent;
+    }
+
+    .erp-tab-panel {
+        @apply hidden pt-6;
+    }
+
+    .erp-tab-panel-active {
+        @apply block;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       NOTIFICATIONS & ALERTS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-notify {
+        @apply flex items-center gap-3 px-5 py-2 text-erp-sm border-b;
+    }
+
+    .erp-notify-info {
+        @apply bg-accent-pale text-accent border-border;
+    }
+
+    .erp-notify-warn {
+        @apply bg-warning/10 text-warning border-warning/30;
+    }
+
+    .erp-notify-success {
+        @apply bg-success/10 text-success border-success/30;
+    }
+
+    .erp-notify-danger {
+        @apply bg-danger/10 text-danger border-danger/30;
+    }
+
+    .erp-notify-close {
+        @apply ml-auto text-sm opacity-60 cursor-pointer hover:opacity-100 transition;
+    }
+
+    /* Unsaved changes indicator */
+    .erp-unsaved {
+        @apply flex items-center gap-1.5 text-erp-sm text-warning font-mono tracking-[0.04em];
+    }
+
+    .erp-unsaved-dot {
+        @apply w-1.5 h-1.5 rounded-full bg-warning;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       ACTION BARS & TOOLBARS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-action-bar {
+        @apply flex items-center h-12 px-6 gap-3 py-2 bg-bg-panel border-b border-border;
+    }
+
+    .erp-action-bar-title {
+        @apply text-erp-sm font-semibold uppercase tracking-[0.04em] text-text-primary;
+    }
+
+    .erp-action-bar-subtitle {
+        @apply text-xs text-text-muted mr-auto;
+    }
+
+    .erp-action-bar-divider {
+        @apply w-px h-5 bg-border;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       LAYOUT & CHROME
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-chrome {
+        @apply flex flex-col h-screen bg-bg-base overflow-hidden;
+    }
+
+    .erp-body-row {
+        @apply flex flex-1 overflow-hidden;
+    }
+
+    .erp-main-area {
+        @apply flex flex-col flex-1 overflow-hidden;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       GLOBAL HEADER
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-global-header {
+        @apply flex items-center gap-5 px-4 bg-bg-header border-b border-border-header shrink-0 h-12;
+    }
+
+    .erp-header-divider {
+        @apply w-px h-5 bg-border-header;
+    }
+
+    .erp-logo {
+        @apply flex items-center gap-2 uppercase font-semibold tracking-[0.12em] text-text-white text-erp-sm whitespace-nowrap;
+    }
+
+    .erp-logo-highlight {
+        @apply text-logo-highlight;
+    }
+
+    .erp-logo-sub {
+        @apply text-text-header-strong text-xs tracking-[0.08em];
+    }
+
+
+    .erp-header-spacer {
+        @apply flex-1;
+    }
+
+    .erp-header-meta {
+        @apply flex items-center gap-4 text-xs text-text-muted font-mono;
+    }
+
+    .erp-env-badge {
+        @apply px-2 py-0.5 text-xs uppercase rounded-sm tracking-[0.08em] bg-accent text-text-avatar;
+    }
+
+    .erp-header-user {
+        @apply flex items-center gap-2 text-erp-sm text-text-muted;
+    }
+
+
+    .erp-user-sep {
+        @apply text-text-nav-muted;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       SIDEBAR NAVIGATION
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-sidebar {
+        @apply w-60 flex flex-col bg-bg-nav text-text-nav transition-all duration-200;
+    }
+
+    .erp-sidebar-collapsed {
+        @apply w-20;
+    }
+
+    /* Section */
+
+    .erp-nav-section {
+        @apply pt-5 border-t border-border-header first:border-t-0;
+    }
+
+    .erp-nav-section-header {
+        @apply px-4 pb-2 text-xs uppercase text-text-nav-muted tracking-[0.08em] cursor-pointer;
+    }
+
+    /* Section Collapse */
+
+    .erp-nav-section-content {
+        @apply flex flex-col;
+    }
+
+    .erp-nav-section-collapsed .erp-nav-section-content {
+        @apply hidden;
+    }
+
+    /* Base Nav Item */
+
+    .erp-nav-item {
+        @apply flex items-center gap-2.5 px-3.5 py-1.5 text-xs text-text-nav tracking-[0.015em] cursor-pointer transition-colors border-l-2 border-transparent select-none;
+    }
+
+    .erp-nav-item:hover {
+        @apply bg-bg-nav-hover;
+    }
+
+    /* Active State */
+
+    .erp-nav-item-active {
+        @apply font-medium bg-bg-nav-active text-text-white border-l-3 border-border-nav-active;
+    }
+
+
+    /* Disabled */
+
+    .erp-nav-item-disabled {
+        @apply opacity-40 cursor-not-allowed;
+    }
+
+    /* Icon Slot */
+
+    .erp-nav-icon {
+        @apply w-3.5 h-3.5 flex items-center justify-center text-text-nav-muted shrink-0;
+    }
+
+    .erp-nav-item-active .erp-nav-icon {
+        @apply text-text-white;
+    }
+
+    /* Label */
+
+    .erp-nav-label {
+        @apply flex-1 whitespace-nowrap;
+    }
+
+    /* Badge */
+
+    .erp-nav-badge {
+        @apply text-xs px-2 py-0.5 rounded-sm bg-bg-nav-badge;
+        @apply text-text-white;
+    }
+
+    /* Sub Items */
+
+    .erp-nav-sub-item {
+        @apply flex items-center gap-3 pl-10 pr-4 py-1.5 border-b border-border-nav-item text-erp-sm text-text-nav-muted cursor-pointer transition-colors;
+    }
+
+    .erp-nav-sub-item:hover {
+        @apply bg-bg-nav-hover text-text-nav;
+    }
+
+    .erp-nav-sub-item-active {
+        @apply bg-bg-nav-active text-text-white;
+    }
+
+    /* Collapsed Sidebar Behavior */
+
+    .erp-sidebar-collapsed .erp-nav-label,
+    .erp-sidebar-collapsed .erp-nav-badge,
+    .erp-sidebar-collapsed .erp-nav-section-header {
+        @apply hidden;
+    }
+
+    .erp-sidebar-collapsed .erp-nav-item,
+    .erp-sidebar-collapsed .erp-nav-sub-item {
+        @apply justify-center;
+    }
+
+    /* Expandable Parent */
+
+    .erp-nav-expand-icon {
+        @apply ml-auto transition-transform duration-200;
+    }
+
+    .erp-nav-item-expanded .erp-nav-expand-icon {
+        @apply rotate-90;
+    }
+
+    /* Children Container */
+
+    .erp-nav-children {
+        @apply max-h-0 flex flex-col overflow-hidden transition-all duration-200;
+    }
+
+    .erp-nav-item-expanded+.erp-nav-children {
+        @apply max-h-125;
+    }
+
+    .erp-breadcrumb {
+        @apply flex items-center text-text-nav-muted gap-1.5 text-sm;
+    }
+
+
+    .erp-breadcrumb-sep {
+        @apply text-text-nav-muted select-none;
+    }
+
+    .erp-breadcrumb-item {
+        @apply whitespace-nowrap;
+    }
+
+    .erp-breadcrumb-current {
+        @apply text-text-breadcrumb-current;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       MODULE GRID
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-module-grid {
+        @apply grid border border-border grid-cols-4;
+    }
+
+    .erp-module-cell {
+        @apply px-4 py-3.5 border-r border-border border-b cursor-pointer transition-colors duration-150;
+    }
+
+    .erp-module-cell:hover {
+        @apply bg-bg-section;
+    }
+
+    .erp-module-cell-icon {
+        @apply mb-1.5 text-lg;
+    }
+
+    .erp-module-cell-name {
+        @apply font-semibold text-table-mono text-text-label;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DATA TABLES
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-mini-table {
+        @apply w-full border-collapse text-table-base;
+    }
+
+    .erp-mini-table thead tr {
+        @apply bg-bg-section;
+    }
+
+    .erp-mini-table th {
+        @apply py-1.5 px-3 text-left text-table-header font-semibold uppercase tracking-[0.1em] text-text-muted border-b border-border;
+    }
+
+    .erp-mini-table td {
+        @apply py-2 px-3 border-b text-text-primary align-middle border-border-table;
+    }
+
+    .erp-mini-table-strong {
+        @apply font-semibold text-table-base;
+    }
+
+    .erp-mini-table-mono {
+        @apply font-mono text-table-mono text-text-secondary;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       INFO PANELS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-info-panel {
+        @apply border border-border bg-bg-section px-5 py-4 flex flex-col gap-2;
+    }
+
+    .erp-info-panel-header {
+        @apply flex items-center gap-2;
+    }
+
+    .erp-info-panel-title {
+        @apply text-sm font-semibold text-text-primary;
+    }
+
+    .erp-info-panel-body {
+        @apply text-xs text-text-muted leading-relaxed;
+    }
+
+    .erp-info-panel-actions {
+        @apply mt-2 flex items-center gap-3;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       TOAST NOTIFICATIONS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-toast {
+        @apply fixed bottom-6 right-6 shadow-md z-toast flex items-center gap-2.5 max-w-90 py-2.5 px-4.5 text-xs rounded-xs border-l-[0.1875rem];
+    }
+
+
+    .erp-toast-success {
+        @apply bg-toast-success-bg text-toast-success-text border-toast-success-border;
+    }
+
+    .erp-toast-warn {
+        @apply bg-toast-warn-bg text-toast-warn-text border-toast-warn-border;
+    }
+
+    .erp-toast-info {
+        @apply bg-toast-info-bg text-toast-info-text border-toast-info-border;
+    }
+
+    .erp-toast-close {
+        @apply ml-auto cursor-pointer opacity-50 text-sm;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       MODAL DIALOGS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-modal-overlay {
+        @apply fixed inset-0 flex items-center justify-center bg-black/40 z-modal;
+    }
+
+    .erp-modal {
+        @apply bg-bg-panel border shadow-lg border-border rounded-xs w-120 max-w-[90%] text-xs;
+    }
+
+    .erp-modal-header {
+        @apply px-5 py-3 border-b border-border flex items-center;
+    }
+
+    .erp-modal-title {
+        @apply text-xs font-semibold tracking-[0.04em] uppercase text-text-primary;
+    }
+
+    .erp-modal-body {
+        @apply px-5 py-4 text-xs text-text-secondary leading-normal;
+    }
+
+    .erp-modal-footer {
+        @apply px-5 py-3 border-t border-border flex justify-end gap-2;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       DROPDOWN MENUS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-dropdown {
+        @apply relative inline-block;
+    }
+
+    .erp-dropdown-menu {
+        @apply absolute shadow-md right-0 mt-1 min-w-45 bg-bg-panel border border-border rounded-xs text-xs z-dropdown;
+    }
+
+    .erp-dropdown-item {
+        @apply px-3 py-1.5 text-text-primary cursor-pointer transition-colors;
+    }
+
+    .erp-dropdown-item:hover {
+        @apply bg-bg-section;
+    }
+
+    .erp-dropdown-divider {
+        @apply h-px bg-border my-1;
+    }
+
+    .erp-dropdown-label {
+        @apply px-3 py-1.5 text-xxs uppercase tracking-[0.08em] text-text-muted;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       TOOLTIPS
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-tooltip {
+        @apply relative inline-block;
+    }
+
+    .erp-tooltip-content {
+        @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2 py-1 text-xs text-text-white bg-text-primary rounded-xs shadow-lg whitespace-nowrap z-tooltip opacity-0 pointer-events-none transition-opacity duration-200;
+    }
+
+    .erp-tooltip:hover .erp-tooltip-content {
+        @apply opacity-100;
+    }
+
+    /* ═════════════════════════════════════════════════════════
+       PAGINATION
+       ═════════════════════════════════════════════════════════ */
+
+    .erp-pagination {
+        @apply flex items-center gap-1;
+    }
+
+    .erp-pagination-item {
+        @apply min-w-7 h-7 px-2.5 flex items-center justify-center border border-border bg-bg-panel text-xs text-text-primary rounded-xs cursor-pointer transition-colors;
+    }
+
+    .erp-pagination-item:hover {
+        @apply bg-bg-section;
+    }
+
+    .erp-pagination-active {
+        @apply bg-accent text-text-white border-accent;
+    }
+
+    .erp-pagination-disabled {
+        @apply text-text-muted cursor-not-allowed opacity-60;
+    }
+
+    .erp-audit {
+        @apply border border-border bg-bg-panel rounded-sm;
+    }
+
+    .erp-audit-header {
+        @apply px-4 pt-3 pb-2.5 text-xs font-semibold uppercase tracking-widest text-text-muted bg-bg-section border-b border-border flex items-center gap-2;
+    }
+
+    .erp-audit-entry {
+        @apply px-4 py-2 border-b border-border-table;
+    }
+
+    .erp-audit-time {
+        @apply text-xxs text-text-muted font-mono;
+    }
+
+    .erp-audit-msg {
+        @apply text-erp-sm text-text-primary leading-snug;
+    }
+
+    .erp-audit-user {
+        @apply text-xxs text-text-secondary font-mono;
+    }
+
+    .erp-audit-footer {
+        @apply px-4 py-2 border-t border-border;
+    }
+
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   UTILITY LAYER — ANIMATIONS & HELPERS
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+@layer utilities {
+
+    /* Toast entrance animation keyframe */
+    @keyframes toastin {
+        from {
+            opacity: 0;
+            transform: translateY(0.5rem);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    /* Apply toast animation to element */
+    .erp-toast-animate {
+        animation: toastin 0.2s ease;
+    }
+
+    /* Custom Scrollbar Styling */
+
+    .erp-scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+    }
+
+    /* Webkit browsers */
+
+    .erp-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    /* hidden track */
+
+    .erp-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* hidden thumb by default */
+
+    .erp-scrollbar::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 4px;
+    }
+
+    /* show scrollbar on hover */
+
+    .erp-scrollbar:hover {
+        scrollbar-color: var(--color-border) transparent;
+    }
+
+    .erp-scrollbar:hover::-webkit-scrollbar-thumb {
+        background-color: var(--color-border);
+    }
+
+    .erp-scrollbar:hover::-webkit-scrollbar-thumb:hover {
+        background-color: var(--color-border-strong);
+    }
+
+
+    /* Text Truncation (single line) */
+    .erp-truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+
+    /* Disable text selection */
+    .erp-no-select {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}

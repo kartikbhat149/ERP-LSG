@@ -1,0 +1,73 @@
+/* Code block */
+
+.lsg-code-block{
+  border:1px solid var(--border);
+  border-radius:4px;
+  overflow:hidden;
+}
+
+/* Code header */
+
+.lsg-code-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 12px;
+  background:var(--bg-section);
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+}
+
+.lsg-code-title{
+  font-weight:600;
+  color:var(--text-muted);
+}
+
+/* Code body */
+
+.lsg-code{
+  padding:20px 24px;
+  font-size:13px;
+  line-height:1.6;
+}
+
+/* Tabs container */
+
+.lsg-tabs {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-panel);
+}
+
+/* Tab button */
+
+.lsg-tab {
+  font-size: 12px;
+  padding: 6px 12px;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+/* Hover */
+
+.lsg-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-section);
+}
+
+/* Active tab */
+
+.lsg-tab-active {
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--accent);
+  background: var(--bg-panel);
+  font-weight: 500;
+}
+
+.lsg-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
