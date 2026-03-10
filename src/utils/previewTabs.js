@@ -13,14 +13,14 @@ export function previewTabs(previewHTML) {
   <div class="flex border-b border-border text-xs">
 
     <button
-      class="tab-btn px-3 py-2 font-medium text-blue-900 border-b-2 border-blue-600 bg-blue-100">
+      class="cursor-pointer tab-btn px-3 py-2 font-medium text-blue-900 border-b-2 border-blue-600 bg-blue-100">
 
       Preview
 
     </button>
 
     <button
-      class="tab-btn px-3 py-2 font-medium text-text-muted hover:text-text-primary">
+      class="cursor-pointer tab-btn px-3 py-2 font-medium text-text-muted hover:text-text-primary">
 
       HTML
 
