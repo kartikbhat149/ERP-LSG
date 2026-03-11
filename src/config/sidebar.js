@@ -118,13 +118,21 @@ export const sidebarConfig = [
         children: [
           { label: "Hero Icons (300+)", url: "https://heroicons.com/", external: true },
           { label: "Tabler Icons (4000+)", url: "https://tabler.io/icons#search", external: true },
-          { label: "Lucide Icons (1400+)", url: "https://lucide.dev/icons/", external: true }
+          { label: "Lucide Icons (1400+)", url: "https://lucide.dev/icons/", external: true },
+          { label: "Iconify", url: "https://icon-sets.iconify.design/ic/", external: true }
+        ]
+      },
+      {
+        label: "SVGs",
+        children: [
+          { label: "unDraw", url: "https://undraw.co/illustrations", external: true },
         ]
       },
       {
         label: "Charts",
         children: [
           { label: "Chart.js", url: "https://www.chartjs.org/", external: true }
+          { label: "Apache Charts", url: "https://apexcharts.com/", external: true }
         ]
       },
       {

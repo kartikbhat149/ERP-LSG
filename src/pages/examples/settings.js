@@ -119,7 +119,7 @@ Chrome Layout
   page.appendChild(
     ExampleFrame(
       SettingsView(),
-      "#/examples/setting-page"
+      "#/examples/settings-page"
     )
   )
 
