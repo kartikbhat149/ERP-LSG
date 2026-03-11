@@ -131,7 +131,7 @@ export const sidebarConfig = [
       {
         label: "Charts",
         children: [
-          { label: "Chart.js", url: "https://www.chartjs.org/", external: true }
+          { label: "Chart.js", url: "https://www.chartjs.org/", external: true },
           { label: "Apache Charts", url: "https://apexcharts.com/", external: true }
         ]
       },
